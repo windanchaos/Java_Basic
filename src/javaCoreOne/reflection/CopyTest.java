@@ -2,7 +2,9 @@ package javaCoreOne.reflection;
 
 import java.lang.reflect.Array;
 import java.util.Arrays;
-
+/*
+ * 5.7.5
+ */
 public class CopyTest {
 
 	public static void main(String[] args) {
