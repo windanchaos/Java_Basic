@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding='utf-8'?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="caseSuite1">
+	<test name="testAll">
+		<classes>
+			<class name="testng.groups.GroupsOnClass1" />
+			<class name="testng.groups.GroupsOnClass2" />
+			<class name="testng.groups.GroupsOnClass3" />
+			<class name="testng.groups.GroupsOnClass4" />
+		</classes>
+	</test>
+	<test name="onlyStudent">
+		<groups>
+			<run>
+				<include name="student" />
+			</run>
+		</groups>
+
+		<classes>
+			<class name="testng.groups.GroupsOnClass1" />
+			<class name="testng.groups.GroupsOnClass2" />
+			<class name="testng.groups.GroupsOnClass3" />
+			<class name="testng.groups.GroupsOnClass4" />
+		</classes>
+	</test>
+	<test name="onlyTeacher">
+		<groups>
+			<run>
+				<include name="teacher" />
+			</run>
+		</groups>
+		<classes>
+			<class name="testng.groups.GroupsOnClass1" />
+			<class name="testng.groups.GroupsOnClass2" />
+			<class name="testng.groups.GroupsOnClass3" />
+			<class name="testng.groups.GroupsOnClass4" />
+		</classes>
+	</test>
+</suite>
