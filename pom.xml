@@ -6,6 +6,10 @@
 	<artifactId>Java_Basic</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Java_Basic</name>
+<!-- 	<modules>
+		<module>Chapter5</module>
+		<module>Chapter6</module>
+	</modules> -->
 	<build>
 		<sourceDirectory>src</sourceDirectory>
 		<resources>
@@ -38,11 +42,6 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<version>8.0.15</version>
 		</dependency>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>3.8.1</version>
-			<scope>test</scope>
-		</dependency>
+
 	</dependencies>
 </project>
