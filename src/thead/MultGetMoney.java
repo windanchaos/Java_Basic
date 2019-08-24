@@ -6,10 +6,10 @@ public class MultGetMoney {
     public static void main(String[] args) {
         BankAccount bankAccount=new BankAccount(2239902);
         //4个线程同时取款，会造成超取的情况
-        MoneyAccout moneyAccout1=new MoneyAccout(bankAccount);
-        MoneyAccout moneyAccout2=new MoneyAccout(bankAccount);
-        MoneyAccout moneyAccout3=new MoneyAccout(bankAccount);
-        MoneyAccout moneyAccout4=new MoneyAccout(bankAccount);
+        MoneyAccout moneyAccout1=new MoneyAccout(bankAccount,(int)(Math.random()*10000));
+        MoneyAccout moneyAccout2=new MoneyAccout(bankAccount,(int)(Math.random()*10000));
+        MoneyAccout moneyAccout3=new MoneyAccout(bankAccount,(int)(Math.random()*10000));
+        MoneyAccout moneyAccout4=new MoneyAccout(bankAccount,(int)(Math.random()*10000));
         Thread thread1=new Thread(moneyAccout1);
         Thread thread2=new Thread(moneyAccout2);
         Thread thread3=new Thread(moneyAccout3);
@@ -19,7 +19,7 @@ public class MultGetMoney {
         thread3.start();
         thread4.start();
         try {
-            Thread.sleep(2000);
+            Thread.sleep(1000);
         }catch(Exception e){
             e.printStackTrace();
         }

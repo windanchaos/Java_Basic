@@ -7,6 +7,7 @@
 package data;
 import java.io.File;
 import java.nio.file.*;
+import java.util.LinkedList;
 
 import org.omg.CORBA.PUBLIC_MEMBER;
 /** 
@@ -32,10 +33,8 @@ public class FileDemo
 	 * @param args 
 	 */
 	public static void printFiles(File file,int level){
-		for(int i=0;i<level;i++){
-			System.out.print("-");
-		}
-		System.out.println(file.getName());
+		System.out.println(file.getPath());
+		LinkedList linkedList=new LinkedList();
 		if(file.isDirectory()){
 			for(File filepath:file.listFiles()){
 				printFiles(filepath,level+1);
