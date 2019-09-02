@@ -8,7 +8,6 @@ import java.util.Scanner;
         单词就打印出“Yes”，不包含就打印出“No”
 125.	【上机】用二重循环求出二维数组b所有元素的和：
 	int[][] b={{11},{21,22},{31,32,33}}
-
  */
 public class ArrayPractice {
     public static void main(String[] args) {
