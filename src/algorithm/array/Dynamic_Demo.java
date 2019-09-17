@@ -1,4 +1,4 @@
-package algorithm;
+package algorithm.array;
 
 /**
  * 斐波拉契数列Fibonacci 动态规划法

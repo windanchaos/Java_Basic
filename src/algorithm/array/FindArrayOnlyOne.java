@@ -1,11 +1,9 @@
-package algorithm;
+package algorithm.array;
 
 import org.testng.annotations.DataProvider;
-import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import java.lang.reflect.Array;
-import java.util.concurrent.SynchronousQueue;
 
 public class FindArrayOnlyOne {
     public static void main(String[] args) {

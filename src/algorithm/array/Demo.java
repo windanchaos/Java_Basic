@@ -4,7 +4,7 @@
  * File Name:Demo.java 
  * Date:2018年9月23日下午8:05:35
  */ 
-package algorithm;
+package algorithm.array;
 
 
 public class Demo

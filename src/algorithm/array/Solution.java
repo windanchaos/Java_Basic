@@ -1,4 +1,4 @@
-package algorithm;
+package algorithm.array;
 
 public class Solution {
 	    public static void rotate(int[] nums, int k) {
