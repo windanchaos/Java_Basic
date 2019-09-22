@@ -3,3 +3,6 @@ test-output/
 .idea/
 target/
 .settings/
+bin/
+.classpath
+.project
