@@ -50,22 +50,141 @@ public class MyAtoi {
         String s1 = "words and 987";
         String s2 = "2";
         String s3 = "  --12-";
-        String s4 = "-91283472332";
+        String s4 = "91283472332";
         String s5 = "42";
         String s6="2147483648";
         String s7="   -43";
-        String s8="         +114249g23041";
+        String s8="         -000000023041";
         String s9="         +10523538441s";
-        System.out.println(solution("+1"));
-//        System.out.println(solution(s2));
-//        System.out.println(solution(s3));
-//        System.out.println(solution(s4));
-//        System.out.println(solution(s5));
-//        System.out.println(solution(s6));
+        System.out.println(solution(s1));
+        System.out.println(solution(s2));
+        System.out.println(solution(s3));
+        System.out.println(solution(s4));
+        System.out.println(solution(s5));
+        System.out.println(solution(s6));
+        System.out.println(solution(s7));
+        System.out.println(solution(s8));
+        System.out.println(solution(s9));
     }
 
+    /*
+    第三遍，把事情简单处理
+    符号和数字独立处理
+     */
+    public static int solution(String s){
+        //排除所有空格
+        String str=s.trim();
+        //空情况
+        if(str.length()==0) return 0;
+        //符号
+        int negative=-1;
+        if(str.charAt(0)=='-'){
+            str=str.substring(1);
+        }else if(str.charAt(0)=='+'){
+            negative=1;
+            str=str.substring(1);
+        }else {
+            negative=1;
+        }
+        //保存数值
+        long number=0;
+        for(int i=0;i<str.length();i++){
+            if(!Character.isDigit(str.charAt(i))){
+                break;
+            }else {
+                number=number*10+(str.charAt(i)-'0');
+            }
+            //越界直接结束
+            if(i>9) {
+                if (number * negative > Integer.MAX_VALUE)
+                    return Integer.MAX_VALUE;
+                if (number * negative < Integer.MIN_VALUE)
+                    return Integer.MIN_VALUE;
+            }
+        }
 
-    public static int solution(String str){
+        return (int)number*negative;
+
+    }
+    /*
+    别人的解法，这个更优雅
+     */
+    public static int solutionBetter(String str){
+        str = str.trim();
+        if(str.length() == 0) return 0;
+
+        int sign = 1;
+        if(str.charAt(0) == '-'){
+            sign = -1;
+            str = str.substring(1);
+        }else if(str.charAt(0) == '+'){
+            sign = 1;
+            str = str.substring(1);
+        }
+
+        long ans = 0;
+        for(int i=0; i<str.length(); i++){
+            char val = str.charAt(i);
+            if(!Character.isDigit(val))
+                break;
+
+            ans = ans * 10 + (val - '0');
+            if(ans * sign < Integer.MIN_VALUE) return Integer.MIN_VALUE;
+            if(ans * sign > Integer.MAX_VALUE) return Integer.MAX_VALUE;
+        }
+
+        return (int)ans* sign;
+    }
+    /*
+    别人的非正则，这里它把“   --2-”认为是不做处理的
+    这里对"-0000022"的处理很精巧，用  char-'0'的方式取得。
+    对符号的处理也单独出来。像我自己写的话，是混在一起的。
+
+     */
+    public static int solutionBetter2(String str) {
+        int i = 0, j = 0, len = str.length();
+        boolean negative = false;
+        for (i = 0; i < len; i++) {
+            if ('0' <= str.charAt(i) && str.charAt(i) <= '9') {
+                break;
+            } else if (str.charAt(i) == '-' || str.charAt(i) == '+') {
+                negative = str.charAt(i) == '-';
+                i++;
+                break;
+            } else if (str.charAt(i) != ' ') {
+                return 0;
+            }
+        }
+        for (j = i; j < len; j++) {
+            if (str.charAt(j) < '0' || '9' < str.charAt(j)) {
+                break;
+            }
+        }
+        int ret = 0;
+        String num = str.substring(i, j);
+        for (int x = 0; x < num.length(); x++) {
+            int cur = num.charAt(x) - '0';
+            if (negative) {
+                //这里判断溢出的情况和第7题一样
+                if (ret < Integer.MIN_VALUE / 10|| ret == Integer.MIN_VALUE / 10 && cur > 8) {
+                    return Integer.MIN_VALUE;
+                }
+                ret = ret * 10 - cur;
+            } else {
+                if (ret > Integer.MAX_VALUE / 10 || ret == Integer.MAX_VALUE / 10 && cur > 7) {
+                    return Integer.MAX_VALUE;
+                }
+                ret = ret * 10 + cur;
+            }
+        }
+        return ret;
+    }
+
+/*
+    第二遍
+    public static int solution(String s){
+        //去空格
+        String str=s.trim();
         char[] c=str.toCharArray();
         int start=-1;
         int end=-1;
@@ -92,23 +211,24 @@ public class MyAtoi {
         }
         long number;
 
-        if(start>0 && c[start-1]=='-' || (start>0 && c[start-1]=='+') ){
-            //排除数字前的不能有非数字
-            for(int i=0;i<start-1;i++){
-                if(c[i]!=' '){
-                    return 0;
-                }
+        if(start>0 && c[start-1]=='-'){
+            while(c[start]==0){
+                c[start]='-';
+                start++;
             }
             number = Long.valueOf(str.substring(start-1,end-start>10?(start+10):end));
-        }else {
+        }else if(start>0 && c[start-1]=='+'){
             //排除数字前的不能有非数字
-            for (int i = 0; i < start; i++) {
-                if (c[i] != ' ') {
-                    return 0;
-                }
+            while(c[start]==0){
+                c[start]='+';
+                start++;
             }
+            number = Long.valueOf(str.substring(start-1,end-start>10?(start+10):end));
+        }else if(c[start-1]<'0'||c[start-1]>'9'){
+            return 0;
+        }else
             number = Long.valueOf(str.substring(start, end - start > 10 ? start + 10 : end));
-        }
+
         if (number > Integer.MAX_VALUE) {
             return Integer.MAX_VALUE;
         }
@@ -119,7 +239,10 @@ public class MyAtoi {
         return (int) number;
 
     }
+
+ */
     /*
+    第一遍
     思路：遍历 空 到空之间的数字，取得的数字范围检测。
 
     public static int solution(String s) {
