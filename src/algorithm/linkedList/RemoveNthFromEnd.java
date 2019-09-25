@@ -21,6 +21,7 @@ import java.util.ArrayList;
 public class RemoveNthFromEnd {
     /*
     好程序，要考虑边界
+    已经战胜 99.26 % 的 java 提交记录
      */
     public static ListNode Solution(ListNode head, int n){
         ListNode pointer=head;
