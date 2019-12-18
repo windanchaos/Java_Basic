@@ -1,11 +1,20 @@
 package hogwarts.webAuto.POM.page;
 
+import hogwarts.webAuto.POM.utils.ConfigUtil;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 
 public class IndexPage extends BasePage{
-    public IndexPage(){
-        //driver.manage().addCookie();
-        driver.get("");
+    public static String url="https://work.weixin.qq.com/";
+    public IndexPage loginWithCookies(){
+        driver.navigate().to(url);
+        ConfigUtil.setCookieConfig(driver);
+        driver.findElement(By.linkText("企业登录")).click();
+        return this;
+    }
+    //退出
+    public void quit(){
+        driver.quit();
     }
     //首页
     public IndexPage switchIndexPage(){
@@ -14,8 +23,15 @@ public class IndexPage extends BasePage{
     }
     //通讯录
     public ContactsPage switchContactsPage(){
+        findElement(By.id("menu_contacts")).click();
+        try{
+            waitClickable(By.linkText("立即邀请"),2);
+        }
+        catch (NoSuchElementException e){
 
-        return new ContactsPage();
+        }finally {
+            return new ContactsPage();
+        }
     }
     //应用管理
     public AppsPage switchAppPage(){
@@ -38,41 +54,34 @@ public class IndexPage extends BasePage{
         return new ProfilePage();
     }
     //常用入口
-    public CommonEntrance commonEntrance(){
-        return new CommonEntrance();
-    }
-}
-/*
-常用入口的PO
- */
-class CommonEntrance extends BasePage{
     //添加成员
     public ContactsPage toContact(){
-        findElement(By.name("添加成员")).click();
+        waitClickable(By.linkText("添加成员"),2);
+        findElement(By.linkText("添加成员")).click();
         return new ContactsPage();
     }
 
     //导入通讯录
     public ContactsPage toAddContact(){
-        findElement(By.name("导入通讯录")).click();
+        findElement(By.linkText("导入通讯录")).click();
         return new ContactsPage();
     }
 
     //成员加入
     public CustomerPage toMemberJoin(){
-        findElement(By.name("成员加入  ")).click();
+        findElement(By.linkText("成员加入  ")).click();
         return new CustomerPage();
     }
 
     //消息群发
     public ManageToolsPage toCreateMessage(){
-        findElement(By.name("消息群发")).click();
+        findElement(By.linkText("消息群发")).click();
         return new ManageToolsPage();
     }
 
     //客户联系
     public CustomerPage toCustomer(){
-        findElement(By.name("客户联系")).click();
+        findElement(By.linkText("客户联系")).click();
         return new CustomerPage();
     }
 

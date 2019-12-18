@@ -1,29 +1,48 @@
 package hogwarts.webAuto.POM.testcase;
 
+import hogwarts.webAuto.POM.page.IndexPage;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.Cookie;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 
 public class TestWework {
-    public static String url="https://work.weixin.qq.com/";
-    WebDriver driver = new ChromeDriver();
-
+    public static IndexPage indexPage;
     @Before
     public void setUp(){
-        driver.get(url);
-        driver.manage().addCookie(new Cookie());
+        indexPage=new IndexPage();
+        indexPage.loginWithCookies();
     }
     @After
     public void tearDown(){
-
+        try {
+            Thread.sleep(10 * 1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        indexPage.quit();
     }
 
     @Test
-    public void login(){
-
+    public void addContacts(){
+        indexPage.toContact().addContact("test01","1212321311","18781901171");
+        indexPage.switchIndexPage();
+        indexPage.toContact().addContact("test02","1212321312","18781901172");
+        indexPage.switchIndexPage();
+        indexPage.toContact().addContact("test03","1212321313","18781901173");
     }
 
+    @Test
+    public void searchDelContact(){
+        indexPage.switchContactsPage().searchAndDelContact("test01");
+    }
+
+    @Test
+    public void chooseDelContact(){
+        indexPage.switchContactsPage().chooseAndDelContact();
+    }
+    @Test
+    public void importContactFromFile(){
+        indexPage.switchContactsPage().importFromFile("D:\\Code\\Java_Basic\\src\\hogwarts\\webAuto\\POM\\" +
+                "data\\通讯录批量导入模板.xlsx");
+    }
 }
