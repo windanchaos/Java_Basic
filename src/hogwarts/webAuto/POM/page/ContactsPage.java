@@ -49,5 +49,34 @@ public class ContactsPage extends BasePage{
         return this;
     }
 
+    //部门管理、增删改查
+    /*
+    class=icon jstree-contextmenu-hover 表示组可见，它的父级就是元素
+     */
+
+    public ContactsPage showAllGroup(){
+        //找到部分的顶级元素
+        WebElement tree = driver.findElement(By.xpath("//ul[@class='jstree-children']"));
+        showGroup(tree);
+        return this;
+    }
+
+    public ContactsPage showGroup(WebElement element){
+        List<WebElement> groups =getGroups(element);
+        if(null!=groups){
+            for(int i=0;i<groups.size();i++){
+                System.out.println(groups.get(i).findElements(By.xpath("//span[@class='icon jstree-contextmenu-hover']/parent::a")).size());
+                groups.get(i).findElement(By.xpath("//span[@class='icon jstree-contextmenu-hover']/parent::a")).click();
+                showGroup(groups.get(i));
+            }
+        }else element.findElement(By.xpath("//span[@class='icon jstree-contextmenu-hover']/parent::a")).click();
+        return this;
+    }
+
+    private List<WebElement> getGroups(WebElement element){
+        //在元素中找元素
+        List<WebElement> group = element.findElements(By.className("jstree-contextmenu-hover"));
+        return group;
+    }
 
 }

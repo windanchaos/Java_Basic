@@ -45,4 +45,8 @@ public class TestWework {
         indexPage.switchContactsPage().importFromFile("D:\\Code\\Java_Basic\\src\\hogwarts\\webAuto\\POM\\" +
                 "data\\通讯录批量导入模板.xlsx");
     }
+    @Test
+    public void showGroups(){
+        indexPage.switchContactsPage().showAllGroup();
+    }
 }

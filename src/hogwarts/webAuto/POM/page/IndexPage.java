@@ -25,7 +25,7 @@ public class IndexPage extends BasePage{
     public ContactsPage switchContactsPage(){
         findElement(By.id("menu_contacts")).click();
         try{
-            waitClickable(By.linkText("立即邀请"),2);
+            waitClickable(By.linkText("立即邀请"),3);
         }
         catch (NoSuchElementException e){
 
