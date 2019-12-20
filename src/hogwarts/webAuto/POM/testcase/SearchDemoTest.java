@@ -8,10 +8,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxOptions;
-import org.openqa.selenium.firefox.FirefoxProfile;
-import org.openqa.selenium.firefox.ProfilesIni;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -28,10 +26,14 @@ public class SearchDemoTest {
     @Before
     public void setUp() {
         //System.setProperty("webdriver.firefox.marionette", "C:\\Windows\\System32\\geckodriver.exe");
-        ProfilesIni pi = new ProfilesIni();
-        FirefoxProfile profile = pi.getProfile("default");
-        driver = new FirefoxDriver( new FirefoxOptions().setProfile(profile));
-        //driver = new ChromeDriver();
+        //firefox启动默认用户配置
+//        ProfilesIni pi = new ProfilesIni();
+//        FirefoxProfile profile = pi.getProfile("default");
+//        driver = new FirefoxDriver( new FirefoxOptions().setProfile(profile));
+        //chrome启动默认用户配置
+        ChromeOptions chromeOptions = new ChromeOptions();
+        chromeOptions.addArguments("--user-data-dir=C:\\Users\\xuecheng.MAIKE51\\AppData\\Local\\Google\\Chrome\\User Data");
+        driver = new ChromeDriver(chromeOptions);
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         driver.manage().window().maximize();
         js = (JavascriptExecutor) driver;

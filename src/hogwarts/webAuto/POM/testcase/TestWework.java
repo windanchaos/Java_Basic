@@ -49,4 +49,12 @@ public class TestWework {
     public void showGroups(){
         indexPage.switchContactsPage().showAllGroup();
     }
+    @Test
+    public void addGroup(){
+        indexPage.switchContactsPage().addGroup("A-1","A-1-1");
+    }
+    @Test
+    public void searchGroupDel(){
+        indexPage.switchContactsPage().searchGroupDel("A-1-1");
+    }
 }

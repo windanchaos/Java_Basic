@@ -22,12 +22,26 @@ public class BasePage {
     public WebElement findElement(By by) {
         return driver.findElement(by);
     }
+    public WebElement findElement(By by,int timeout) {
+        waitClickable(by,timeout);
+        return driver.findElement(by);
+    }
     public WebElement findAndMoveElement(By by){
         if(!driver.findElement(by).isEnabled()){new Actions(driver).moveToElement(driver.findElement(by));}
         return findElement(by);
     }
+    //等待可见
+    public void waitVisibable(By by){
+        new WebDriverWait(driver,5).until(ExpectedConditions.visibilityOfElementLocated(by));
+    }
     //等待可点击
     public void waitClickable(By by,int timeout){
-        new WebDriverWait(driver,timeout).until(ExpectedConditions.elementToBeClickable(by));
+        waitVisibable(by);
+        new WebDriverWait(driver, timeout).until(ExpectedConditions.elementToBeClickable(by));
     }
+    //等待可点击
+    public void waitClickable(WebElement element,int timeout){
+        new WebDriverWait(driver, timeout).until(ExpectedConditions.elementToBeClickable(element));
+    }
+
 }
