@@ -94,12 +94,11 @@ public class ContactsPage extends BasePage {
     自动遍历点开所有层级的数据
      */
     public ContactsPage showAllGroup() {
-        //找到部分的顶级元素
+        //初始化，会默认展开2级部门，从这里开始遍历
         List<WebElement> tree = driver.findElements(By.xpath("//ul[@class='jstree-children' and @role='group']"));
         for (int i = 0; i < tree.size(); i++) {
             showGroup(tree.get(i), clickHistory);
         }
-
         return this;
     }
 
@@ -108,28 +107,22 @@ public class ContactsPage extends BasePage {
         int history = clickHistory.size();
         if (null != groups) {
             for (int i = 0; i < groups.size(); i++) {
-                //不包含就点击
-                //压制最后一步的错误
-                try {
-                    //定位到展开元素
-                    waitClickable(groups.get(i).findElement(By.xpath("child::i")), 5);
-                    if (!clickHistory.contains(groups.get(i).findElement(By.xpath("child::a")).getText())) {
-                        //放入点击历史
-                        clickHistory.add(groups.get(i).findElement(By.xpath("child::a")).getText());
-                        System.out.println("点击:"+groups.get(i).findElement(By.xpath("child::a")).getText());
-                        //点击两次展开,第一次click，文本样式变化
-                        //groups.get(i).click();
-                        //groups.get(i).click();
-                        if(groups.get(i).findElement(By.xpath("child::i")).isDisplayed())
-                            groups.get(i).findElement(By.xpath("child::i")).click();
-                        System.out.println("记录历史大小："+clickHistory.size());
-                    }
-                } catch (StaleElementReferenceException e) {
-                    System.out.println(e.getMessage());
-                    continue;
+
+                //等待展开按钮
+                waitClickable(groups.get(i).findElement(By.xpath("child::i")), 5);
+                //展开按钮同级的a标签文本（部门名称）
+                if (!clickHistory.contains(groups.get(i).findElement(By.xpath("child::a")).getText())) {
+                    //放入点击历史
+                    clickHistory.add(groups.get(i).findElement(By.xpath("child::a")).getText());
+                    System.out.println("点击:" + groups.get(i).findElement(By.xpath("child::a")).getText());
+                    //展开按钮可见则点击
+                    if (groups.get(i).findElement(By.xpath("child::i")).isDisplayed())
+                        groups.get(i).findElement(By.xpath("child::i")).click();
+                    System.out.println("记录历史大小：" + clickHistory.size());
                 }
+
             }
-            //循环终止条件
+            //当点击历史不再增加，则表明点击完成，循环不在进行
             if (history != clickHistory.size()) {
                 //因为结构变化，需重新调用主函数
                 showAllGroup();
