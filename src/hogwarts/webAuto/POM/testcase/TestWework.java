@@ -15,7 +15,7 @@ public class TestWework {
     @After
     public void tearDown(){
         try {
-            Thread.sleep(10 * 1000);
+            Thread.sleep(20 * 1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
