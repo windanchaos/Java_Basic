@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "First",
+    "price": 33,
+    "tags": [
+      "GEO",
+      "MATH"
+    ],
+    "dimensions": {
+      "length": 100,
+      "width": 100,
+      "height": 20
+    }
+  },
+  {
+    "id": 2,
+    "name": "Second",
+    "price": 18,
+    "dimensions": {
+      "length": 200,
+      "width": 100,
+      "height": 10
+    }
+  }
+]

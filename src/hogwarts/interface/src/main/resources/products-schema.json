@@ -1,0 +1,104 @@
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/root.json",
+  "type": "array",
+  "title": "The Root Schema",
+  "items": {
+    "$id": "#/items",
+    "type": "object",
+    "title": "The Items Schema",
+    "required": [
+      "id",
+      "name",
+      "price"
+    ],
+    "properties": {
+      "id": {
+        "$id": "#/items/properties/id",
+        "type": "integer",
+        "title": "The Id Schema",
+        "default": 0,
+        "examples": [
+          1
+        ]
+      },
+      "name": {
+        "$id": "#/items/properties/name",
+        "type": "string",
+        "title": "The Name Schema",
+        "default": "",
+        "examples": [
+          "First"
+        ],
+        "pattern": "^(.*)$"
+      },
+      "price": {
+        "$id": "#/items/properties/price",
+        "type": "integer",
+        "title": "The Price Schema",
+        "default": 0,
+        "examples": [
+          33
+        ]
+      },
+      "tags": {
+        "$id": "#/items/properties/tags",
+        "type": "array",
+        "title": "The Tags Schema",
+        "default": null,
+        "items": {
+          "$id": "#/items/properties/tags/items",
+          "type": "string",
+          "title": "The Items Schema",
+          "default": "",
+          "examples": [
+            "GEO",
+            "MATH"
+          ],
+          "pattern": "^(.*)$"
+        }
+      },
+      "dimensions": {
+        "$id": "#/items/properties/dimensions",
+        "type": "object",
+        "title": "The Dimensions Schema",
+        "default": null,
+        "required": [
+          "length",
+          "width",
+          "height"
+        ],
+        "properties": {
+          "length": {
+            "$id": "#/items/properties/dimensions/properties/length",
+            "type": "integer",
+            "title": "The Length Schema",
+            "default": 0,
+            "examples": [
+              100
+            ]
+          },
+          "width": {
+            "$id": "#/items/properties/dimensions/properties/width",
+            "type": "integer",
+            "title": "The Width Schema",
+            "default": 0,
+            "examples": [
+              100
+            ]
+          },
+          "height": {
+            "$id": "#/items/properties/dimensions/properties/height",
+            "type": "integer",
+            "title": "The Height Schema",
+            "default": 0,
+            "examples": [
+              20
+            ]
+          }
+        }
+      }
+    }
+  }
+}
