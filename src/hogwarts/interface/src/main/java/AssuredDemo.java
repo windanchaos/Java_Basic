@@ -28,8 +28,8 @@ http://localhost:8000/products-schema.json
 public class AssuredDemo {
     String lottoJson="http://localhost:8000/lotto.json";
     String products_schemaJson="http://localhost:8000/products.json";
-    String get_xml="http://localhost:8000/namespace-example";
-
+    String namespace_xml="http://localhost:8000/namespace-example";
+    String shopping_xml="http://localhost:8000/shopping";
     @Test
     public void testJsonSample(){
         given().get(lottoJson).then().statusCode(200).body("lotto.lottoId",equalTo(5));
@@ -39,10 +39,15 @@ public class AssuredDemo {
                 .numberReturnType(JsonPathConfig.NumberReturnType.BIG_DECIMAL)))
                 .then().body("price", is(new BigDecimal(12.12)));
         given().get(products_schemaJson).then().assertThat().body(matchesJsonSchema(new File("D:\\Code\\Java_Basic\\src\\hogwarts\\interface\\src\\main\\resources\\products-schema.json")));
+    }
+    @Test
+    public void testXMLSample(){
         RestAssured.registerParser("application/octet-stream", Parser.XML);
         given().config(RestAssuredConfig.config().xmlConfig(XmlConfig.xmlConfig().declareNamespace("test","http://localhost/")))
-                .when().get(get_xml).then().body("foo.bar.text()", equalTo("sudo make me a sandwich!")).log().all().
+                .when().get(namespace_xml).then().body("foo.bar.text()", equalTo("sudo make me a sandwich!")).log().all().
                 body(":foo.:bar.text()", equalTo("sudo ")).
                 body("foo.test:bar.text()", equalTo("make me a sandwich!"));
+        given().get(shopping_xml).then().body("shopping.category.find.find { it.@type == 'test' }",
+                hasItems("Finder"));
     }
 }

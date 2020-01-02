@@ -1,4 +1,0 @@
-<greeting>
-   <firstName>{params("firstName")}</firstName>
-   <lastName>{params("lastName")}</lastName>
-</greeting>

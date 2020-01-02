@@ -1,0 +1,14 @@
+<shopping>
+      <category type="groceries">
+          <find type="test">Finder</find>
+        <item>Chocolate</item>
+        <item>Coffee</item>
+      </category>
+      <category type="supplies">
+        <item>Paper</item>
+        <item quantity="4">Pens</item>
+      </category>
+      <category type="present">
+        <item when="Aug 10">Kathryn's Birthday</item>
+      </category>
+</shopping>
