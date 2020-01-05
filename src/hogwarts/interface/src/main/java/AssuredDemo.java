@@ -6,7 +6,8 @@ import io.restassured.config.RestAssuredConfig;
 import io.restassured.config.XmlConfig;
 import io.restassured.parsing.Parser;
 import io.restassured.path.json.config.JsonPathConfig;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+
 
 import java.io.File;
 import java.math.BigDecimal;
