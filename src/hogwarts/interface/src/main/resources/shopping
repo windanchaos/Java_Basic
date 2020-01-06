@@ -1,6 +1,9 @@
 <shopping>
       <category type="groceries">
-          <find type="test">Finder</find>
+        <find type="test">
+                <item>Coco</item>
+                <item>Rice</item>
+        </find>
         <item>Chocolate</item>
         <item>Coffee</item>
       </category>
