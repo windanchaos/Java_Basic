@@ -12,7 +12,6 @@ public class CommonTools {
     public static final String getTokenURL="https://qyapi.weixin.qq.com/cgi-bin/gettoken";
     public static String token=getToken();
 
-
     //单例模式，私有化默认构造函数，则不会实例化
     private static CommonTools departmentTools = new CommonTools();
     private CommonTools(){}
@@ -47,13 +46,13 @@ public class CommonTools {
     //delete
     private String tagDeleteURL="https://qyapi.weixin.qq.com/cgi-bin/tag/delete?access_token="+token;
     //get
-    private String tagGetURL="https://qyapi.weixin.qq.com/cgi-bin/tag/delete?access_token="+token;
+    private String tagGetUserURL="https://qyapi.weixin.qq.com/cgi-bin/tag/get?access_token="+token;
     //增加标签成员
     private String tagAddtagusersURL="https://qyapi.weixin.qq.com/cgi-bin/tag/addtagusers?access_token="+token;
     //删除标签成员
     private String tagDeltagusersURL="https://qyapi.weixin.qq.com/cgi-bin/tag/deltagusers?access_token="+token;
     //获取标签列表
-    private String tagListURL="https://qyapi.weixin.qq.com/cgi-bin/tag/list?access_token=ACCESS_TOKEN"+token;
+    private String tagListURL="https://qyapi.weixin.qq.com/cgi-bin/tag/list?access_token="+token;
 
 
     public String getDepartmentCreateURL() {
@@ -84,8 +83,8 @@ public class CommonTools {
         return tagDeleteURL;
     }
 
-    public String getTagGetURL() {
-        return tagGetURL;
+    public String getTagUserURL() {
+        return tagGetUserURL;
     }
 
     public String getTagAddtagusersURL() {
