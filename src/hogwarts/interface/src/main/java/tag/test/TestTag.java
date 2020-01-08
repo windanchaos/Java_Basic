@@ -1,9 +1,14 @@
 package main.java.tag.test;
 
+import com.github.mustachejava.DefaultMustacheFactory;
+import com.github.mustachejava.Mustache;
+import com.github.mustachejava.MustacheFactory;
 import main.java.tag.api.TagModel;
 import org.junit.jupiter.api.Test;
 
+import java.io.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import static org.hamcrest.Matchers.equalTo;
 
@@ -65,4 +70,26 @@ public class TestTag {
         model.getTagList().then().body("errcode",equalTo(0)).body("errmsg",equalTo("ok"));
     }
 
+    @Test
+    public void testMustache() throws IOException {
+        HashMap<String, Object> data = new HashMap<String, Object>();
+        data.put("name", "Mustache");
+        Writer writer = new StringWriter();
+        MustacheFactory mf = new DefaultMustacheFactory();
+        Mustache mustache = mf.compile(new StringReader("I say:{{name}}, {{name}}!"), "example");
+        mustache.execute(writer, data);
+        writer.flush();
+        System.out.println(writer.toString());
+    }
+
+    @Test
+    public void testCurrentThread(){
+        StackTraceElement[] elements=Thread.currentThread().getStackTrace();
+        for(int i=0;i<elements.length;i++){
+            System.out.println(elements[i].getClass());
+            System.out.println(elements[i].getMethodName());
+            System.out.println(elements[i].toString());
+            System.out.println("##############################");
+        }
+    }
 }

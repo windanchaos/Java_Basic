@@ -32,7 +32,8 @@ public class TagModel {
         if(values.length==1){
             data.put("tagid",values[0]);
         }
-        return given().contentType(ContentType.JSON).body(data)
+        //模版技术组织json数据
+        return given().contentType(ContentType.JSON).body(commonTools.template("../resources/tag_creat.json",data))
                 .post(creatURL).then()
                 .extract().response();
     }

@@ -1,5 +1,13 @@
 package main.java;
 
+import com.github.mustachejava.DefaultMustacheFactory;
+import com.github.mustachejava.Mustache;
+import com.github.mustachejava.MustacheFactory;
+
+import java.io.StringWriter;
+import java.io.Writer;
+import java.util.HashMap;
+
 import static io.restassured.RestAssured.given;
 
 /*
@@ -97,5 +105,18 @@ public class CommonTools {
 
     public String getTagListURL() {
         return tagListURL;
+    }
+
+    //mustache模版技术
+    public String template(String path, HashMap<String,Object> data)  {
+        Writer writer = new StringWriter();
+        MustacheFactory mf = new DefaultMustacheFactory();
+        /*
+        Class.getResource(String name)：在当前调用类的同一路径下查找该资源
+        ClassLoader.getResource(String name)：在根目录下查找该资源文件，即"/"或classpath目录
+         */
+        Mustache mustache = mf.compile(this.getClass().getResource(path).getPath());
+        mustache.execute(writer, data);
+        return writer.toString();
     }
 }
