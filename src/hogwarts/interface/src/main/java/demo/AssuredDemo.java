@@ -1,4 +1,4 @@
-package main.java;
+package demo;
 
 import io.restassured.RestAssured;
 import io.restassured.builder.ResponseBuilder;

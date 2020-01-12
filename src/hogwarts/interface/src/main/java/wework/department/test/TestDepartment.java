@@ -1,7 +1,7 @@
-package main.java.department.test;
+package wework.department.test;
 
 import io.restassured.response.Response;
-import main.java.department.api.DepartmentModel;
+import wework.department.api.DepartmentModel;
 import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.Matchers.equalTo;

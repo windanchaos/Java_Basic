@@ -1,4 +1,4 @@
-package main.java;
+package tools;
 
 import com.github.mustachejava.DefaultMustacheFactory;
 import com.github.mustachejava.Mustache;

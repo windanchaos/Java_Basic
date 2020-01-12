@@ -1,0 +1,17 @@
+name: "bojiangCom"
+boss:
+  name: "bobofu"
+  phone: 18781901170
+  school: "yanbian Univercity"
+departments:
+- id: 1
+  name: "总部"
+  leader:
+    id: 1
+    name: "bobofu"
+- id: 2
+  name: "成都分部"
+  leader:
+    id: 2
+    name: "fubobo"
+

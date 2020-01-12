@@ -1,10 +1,11 @@
-package main.java.tag.test;
+package wework.tag.test;
 
 import com.github.mustachejava.DefaultMustacheFactory;
 import com.github.mustachejava.Mustache;
 import com.github.mustachejava.MustacheFactory;
-import main.java.tag.api.TagModel;
+import wework.tag.api.Tag;
 import org.junit.jupiter.api.Test;
+import wework.tag.api.TagModel;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -16,11 +17,16 @@ import static org.hamcrest.Matchers.equalTo;
 目前还未没有考虑重复执行的问题
  */
 public class TestTag {
-    static TagModel model = new TagModel();
+    static Tag model = new Tag();
+    static TagModel model2 = new TagModel();
 
     @Test
     public void testCreate(){
         model.create("UI").then().body("errcode",equalTo(0)).body("errmsg",equalTo("created"));
+    }
+    @Test
+    public void testCreate2(){
+        model2.create("UI").then().body("errcode",equalTo(0)).body("errmsg",equalTo("created"));
     }
     @Test
     public void testCreateWithTagid(){
@@ -30,6 +36,10 @@ public class TestTag {
     @Test
     public void testUpdate(){
         model.update(1,"换了个名字").then().body("errcode",equalTo(0)).body("errmsg",equalTo("updated"));
+    }
+    @Test
+    public void testUpdate2(){
+        model2.update(1,"换了个名字ah").then().body("errcode",equalTo(0)).body("errmsg",equalTo("updated"));
     }
     @Test
     public void testDel(){
@@ -64,6 +74,10 @@ public class TestTag {
         ArrayList<Integer> list=new ArrayList();
         list.add(1);
         model.deltagusers(1,"partylist",list).then().body("errmsg",equalTo("deleted"));
+    }
+    @Test
+    public void testGetTagList2(){
+        model2.list().then().body("errcode",equalTo(0)).body("errmsg",equalTo("ok"));
     }
     @Test
     public void testGetTagList(){

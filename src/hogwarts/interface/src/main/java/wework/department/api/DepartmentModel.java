@@ -1,8 +1,8 @@
-package main.java.department.api;
+package wework.department.api;
 
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
-import main.java.CommonTools;
+import tools.CommonTools;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -40,7 +40,7 @@ public class DepartmentModel {
     public List<LinkedHashMap> getAll(){
         String departmentListURL=commonTools.getDepartmentListURL();
         //拿到全部部门
-        return given().get(departmentListURL).then().extract().response().getBody().jsonPath().getJsonObject("department");
+        return given().get(departmentListURL).then().extract().response().getBody().jsonPath().getJsonObject("wework/department");
     }
 
     /*

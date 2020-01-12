@@ -53,7 +53,7 @@ public class IOdemo
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
-		SplitFile sp=new SplitFile("D:\\Code\\setting\\ym_formatter.xml", "D:\\Code\\setting", 500);
+		SplitFile sp=new SplitFile("D:\\Code\\setting\\ym_formatter.xmlJsonYaml", "D:\\Code\\setting", 500);
 		try
 		{
 			System.out.println(sp.getSplitNumber());

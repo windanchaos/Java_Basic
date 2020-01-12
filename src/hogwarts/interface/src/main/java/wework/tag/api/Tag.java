@@ -1,8 +1,8 @@
-package main.java.tag.api;
+package wework.tag.api;
 
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
-import main.java.CommonTools;
+import tools.CommonTools;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -10,7 +10,7 @@ import java.util.List;
 
 import static io.restassured.RestAssured.given;
 
-public class TagModel {
+public class Tag {
     private String tagname;
     private Integer tagid;
     private CommonTools commonTools=CommonTools.getInstance();
@@ -52,7 +52,7 @@ public class TagModel {
         HashMap<String,Object> data=new HashMap<>();
         data.put("tagname",tagname);
         data.put("tagid",tagid);
-        return given().contentType(ContentType.JSON).body(data)
+        return given().log().all().contentType(ContentType.JSON).body(data)
                 .post(upateURL).then()
                 .extract().response();
     }

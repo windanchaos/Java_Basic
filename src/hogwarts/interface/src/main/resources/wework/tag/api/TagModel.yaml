@@ -1,0 +1,18 @@
+#每个顶级元素就是一个api的定义，api之下是封装的RequestModel
+create:
+  method: post
+  url: https://qyapi.weixin.qq.com/cgi-bin/tag/create
+update:
+  method: post
+  url: https://qyapi.weixin.qq.com/cgi-bin/tag/update
+  postBody:
+    tagname: ${tagname}
+    tagid: ${tagid}
+delete:
+  method: get
+  url: https://qyapi.weixin.qq.com/cgi-bin/tag/delete
+  queryParams:
+    tagid: ${tagid}
+list:
+  method: get
+  url: https://qyapi.weixin.qq.com/cgi-bin/tag/list
