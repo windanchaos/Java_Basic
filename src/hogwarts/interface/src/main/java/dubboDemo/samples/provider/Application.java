@@ -5,6 +5,7 @@ import org.apache.dubbo.config.ApplicationConfig;
 import org.apache.dubbo.config.RegistryConfig;
 import org.apache.dubbo.config.ServiceConfig;
 
+import java.lang.annotation.Documented;
 import java.util.concurrent.CountDownLatch;
 
 public class Application {
@@ -21,4 +22,5 @@ public class Application {
         System.out.println("dubbo service started");
         new CountDownLatch(1).await();
     }
+
 }
