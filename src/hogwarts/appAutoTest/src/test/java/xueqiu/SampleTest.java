@@ -2,7 +2,6 @@ package xueqiu;
 
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
-import junit.framework.TestCase;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -10,7 +9,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
-import org.openqa.selenium.By;
+
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 public class SampleTest {
@@ -45,7 +44,10 @@ public class SampleTest {
     }
     @Test
     public void test(){
-        driver.findElementByLinkText("行情").click();
+        MobileElement el1 = (MobileElement) driver.findElementByName("行情");
+       // MobileElement el1 = (MobileElement) driver.findElementByAccessibilityId("行情");
+        MobileElement el2 = (MobileElement) driver.findElementById("com.xueqiu.android:id/tv_search");
+        el2.click();
     }
 
     @After
