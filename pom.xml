@@ -6,9 +6,9 @@
 	<artifactId>Java_Basic</artifactId>
 	<packaging>pom</packaging>
 	<version>0.0.1-SNAPSHOT</version>
-	<modules>
-		<module>hogwarts/interfaceTest</module>
-	</modules>
+<!--	<modules>-->
+<!--		<module>hogwarts/interfaceTest</module>-->
+<!--	</modules>-->
 	<name>Java_Basic</name>
 <!-- 	<modules>
 		<module>Chapter5</module>
@@ -64,11 +64,6 @@
 		</dependency>
 
 		<dependency>
-			<groupId>org.seleniumhq.selenium</groupId>
-			<artifactId>selenium-java</artifactId>
-			<version>3.5.3</version>
-		</dependency>
-		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<version>1.18.6</version>
@@ -77,11 +72,6 @@
 			<groupId>org.openjdk.jol</groupId>
 			<artifactId>jol-core</artifactId>
 			<version>0.9</version>
-		</dependency>
-		<dependency>
-			<groupId>io.appium</groupId>
-			<artifactId>java-client</artifactId>
-			<version>5.0.3</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.commons</groupId>
