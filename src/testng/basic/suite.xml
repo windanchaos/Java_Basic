@@ -1,16 +1,16 @@
 <?xmlJsonYaml version="1.0" encoding='utf-8'?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="caseSuite1">
-	<test name="login">
-		<classes>
-			<class name="testng.basic.SuiteConfig" />
-			<class name="testng.basic.LoginTest" />
-		</classes>
-	</test>
-	<test name="pay">
-		<classes>
-			<class name="testng.basic.SuiteConfig" />
-			<class name="testng.basic.PayTest" />
-		</classes>
-	</test>
+    <test name="login">
+        <classes>
+            <class name="testng.basic.SuiteConfig"/>
+            <class name="testng.basic.LoginTest"/>
+        </classes>
+    </test>
+    <test name="pay">
+        <classes>
+            <class name="testng.basic.SuiteConfig"/>
+            <class name="testng.basic.PayTest"/>
+        </classes>
+    </test>
 </suite>

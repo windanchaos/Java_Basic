@@ -1,18 +1,18 @@
 <?xmlJsonYaml version="1.0" encoding='utf-8'?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="multithread" parallel="classes" thread-count="3">
-	<test name="pro">
+    <test name="pro">
 
-		<classes>
-			<class name="testng.parameter.DataProviderTest" />
-		</classes>
+        <classes>
+            <class name="testng.parameter.DataProviderTest"/>
+        </classes>
 
-	</test>
-	<test name="param">
-		<parameter name="name" value="zhangsan" />
-		<parameter name="age" value="10" />
-		<classes>
-			<class name="testng.parameter.ParameterTest" />
-		</classes>
-	</test>
+    </test>
+    <test name="param">
+        <parameter name="name" value="zhangsan"/>
+        <parameter name="age" value="10"/>
+        <classes>
+            <class name="testng.parameter.ParameterTest"/>
+        </classes>
+    </test>
 </suite>

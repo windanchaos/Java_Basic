@@ -5,23 +5,23 @@
 
     <!-- @BeforeTest -->
     <test name="case1">
-      <classes>
-        <!--  <class name="testng.TestConfiguration" />-->
-        <class name="testng.TestDBConnection" />
-        <class name="testng.DBConfig" />
-      </classes>
+        <classes>
+            <!--  <class name="testng.TestConfiguration" />-->
+            <class name="testng.TestDBConnection"/>
+            <class name="testng.DBConfig"/>
+        </classes>
     </test>
     <!-- @AfterTest -->
 
     <!-- @BeforeTest -->
     <test name="case2">
-      <classes>
-        <class name="testng.TestDBConnection" />
-        <class name="testng.DBConfig" />
-      </classes>
+        <classes>
+            <class name="testng.TestDBConnection"/>
+            <class name="testng.DBConfig"/>
+        </classes>
     </test>
     <!-- @AfterTest -->
 
 </suite>
-<!-- @AfterSuite -->
+        <!-- @AfterSuite -->
 
