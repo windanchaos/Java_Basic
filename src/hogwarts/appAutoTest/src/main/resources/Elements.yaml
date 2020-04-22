@@ -1,0 +1,29 @@
+#类名下是element的By对象
+#如果有需要替换的关键词，在具体业务中自己操作,替换格式${key}
+---
+ConsumerClaim:
+  #未认领tab页
+  unclaim:
+    By.ViewText: 未认领
+  #已经认领tab页
+  claimed:
+    By.ViewText: 已认领
+  #查询框定位
+  search:
+    By.id: com.maike51.xke:id/search_view
+  #查询输入框
+  searchTxt:
+    By.id: com.maike51.xke:id/search_edit
+  #滚动查找的checker
+  checker:
+    By.id: com.maike51.xke:id/tvnick
+  #查找name的元素
+  element:
+    By.ViewText: ${key}
+  #拼接认领button的xpath第一二部分，中间带name
+  claimButton:
+    By.xpath: //android.widget.RelativeLayout/*[contains(@text,'${key}')]/parent::*/android.widget.TextView[@resource-id='com.maike51.xke:id/tvclaim']
+ConsumerInfo: {}
+
+ConsumerTag: {}
+

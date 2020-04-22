@@ -1,0 +1,8 @@
+#CollectConsumer类的行为数据驱动
+
+claim:
+
+claimedTab:
+  - clickxpath: //android.widget.TextView[@text='已认领']
+unclaimTab:
+  - clickxpath: //android.widget.TextView[@text='未认领']

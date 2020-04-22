@@ -7,29 +7,34 @@ import static org.junit.Assert.assertTrue;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestJUnit4DemoChild1 {
     @BeforeClass
-    public static void before(){
+    public static void before() {
         System.out.println("类执行前执行before");
     }
+
     @AfterClass
-    public static void after(){
+    public static void after() {
         System.out.println("类最后执行after");
     }
+
     @Before
-    public void beforeMethod(){
+    public void beforeMethod() {
         System.out.println("beforMethod");
     }
+
     @Test
-    public void testDemo3Child1(){
+    public void testDemo3Child1() {
         System.out.println("testDemo3");
         assertTrue(false);
     }
+
     @Test
-    public void testDemo1Child1(){
+    public void testDemo1Child1() {
         System.out.println("testDemo1");
         assertTrue(true);
     }
+
     @Test
-    public void testDemo2Child1(){
+    public void testDemo2Child1() {
         System.out.println("testDemo2");
         assertTrue(false);
     }

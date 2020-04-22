@@ -1,0 +1,8 @@
+#CollectConsumer类的行为数据驱动
+
+collect:
+  - clickxpath: //android.widget.TextView[@text='认领']
+collected:
+  - clickxpath: //android.widget.TextView[@text='已认领']
+uncollected:
+  - clickxpath: //android.widget.TextView[@text='未认领']

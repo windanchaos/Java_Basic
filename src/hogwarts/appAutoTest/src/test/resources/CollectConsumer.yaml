@@ -1,0 +1,13 @@
+#CollectConsumer类的行为数据驱动
+#方法名：（元素操作方式，元素定位）
+#    FindXpathClick,
+#    FindIDClick,
+#    SendKeys,
+#    ScrollFindXpath,
+#    ScrollFindID,
+collect:
+  - clickxpath: //android.widget.TextView[@text='认领']
+collected:
+  - clickxpath: //android.widget.TextView[@text='已认领']
+uncollected:
+  - clickxpath: //android.widget.TextView[@text='未认领']

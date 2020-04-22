@@ -74,7 +74,7 @@ public class SearchDemoTest {
     }
 
     @Test
-    public void getJindata(){
+    public void getJindata() {
         driver.get("https://testerhome.com/topics/19350");
         driver.switchTo().frame(0);
         driver.switchTo().defaultContent();
@@ -83,15 +83,16 @@ public class SearchDemoTest {
         //new Actions(driver).moveToElement(driver.findElement(By.name("抱歉！你访问的表单已停止收集数据"))).perform();
         //driver.findElement(By.partialLinkText("金数据提供技术支持")).click();
         //new Actions(driver).moveToElement(driver.findElement(By.partialLinkText("金数据"))).perform();
-        new WebDriverWait(driver,5).until(ExpectedConditions.titleContains("金数据"));
+        new WebDriverWait(driver, 5).until(ExpectedConditions.titleContains("金数据"));
         System.out.println(driver.findElement(By.partialLinkText("金数据提供技术支持")).getLocation());
         driver.findElement(By.partialLinkText("金数据提供技术支持")).click();
         System.out.println(driver.getWindowHandles().size());
         //driver.switchTo().window((String) driver.getWindowHandles().toArray()[1]);
         //driver.switchTo().window((String) driver.getWindowHandles().toArray()[0]);
     }
+
     @Test
-    public void profileDefault(){
+    public void profileDefault() {
         driver.get("https://www.baidu.com/");
     }
 }

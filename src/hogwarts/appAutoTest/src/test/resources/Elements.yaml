@@ -1,0 +1,72 @@
+#类名下是element的By对象,需要和对应类匹配。
+#比如：unclaim是ConsumerClaim种一个By值域；
+#如果有需要替换的关键词，在具体业务中自己操作,替换格式${key}
+
+#结构
+#   类名称：
+#     值域：
+#       定位方式： 定位字符串
+#
+
+ConsumerClaim:
+  #未认领tab页
+  unclaim:
+    By.ViewText: 未认领
+  #已经认领tab页
+  claimed:
+    By.ViewText: 已认领
+  #查询框定位
+  search:
+    By.id: com.maike51.xke:id/search_view
+  #查询输入框
+  searchTxt:
+    By.id: com.maike51.xke:id/search_edit
+  #滚动查找的checker
+  checker:
+    By.id: com.maike51.xke:id/tvnick
+  #查找name的元素
+  element:
+    By.ViewText: ${key}
+  #拼接认领button的xpath第一二部分，中间带name
+  claimButton:
+    By.xpath: //android.widget.RelativeLayout/*[contains(@text,'${key}')]/parent::*/android.widget.TextView[@resource-id='com.maike51.xke:id/tvclaim']
+ConsumerInfo:
+  #朋友圈
+  frindcircleID:
+    By.id: com.maike51.xke:id/friends_circle
+  #历史订单
+  orderListXpath:
+    By.ViewText: 查看历史订单
+  #其他信息
+  otherInfoID:
+    By.id: com.maike51.xke:id/open
+  #解绑客户
+  unbundID:
+    By.id: com.maike51.xke:id/customer_unbund
+  #发送消息
+  send_msgID:
+    By.id: com.maike51.xke:id/send_msg
+  #备注输入框
+  remark_editID:
+    By.id: com.maike51.xke:id/remark_edit
+  #电话输入框
+  phone_editID:
+    By.id: com.maike51.xke:id/phone_edit
+  #标签标题（作滚屏标识）
+  checkerID:
+    By.id: com.maike51.xke:id/label_title
+  #标签列
+  label_chooseID:
+  #By.id: com.maike51.xke:id/label_choose
+ConsumerTag:
+  addID:
+    By.id: com.maike51.xke:id/add
+  editTextID:
+    By.id: com.maike51.xke:id/edittext
+
+CRM:
+  collectXpath:
+    By.ViewText: 客户认领
+  tagXpath: 客户标签
+
+

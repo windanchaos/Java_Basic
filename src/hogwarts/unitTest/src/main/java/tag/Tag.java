@@ -14,7 +14,7 @@ import static io.restassured.RestAssured.given;
 public class Tag {
     private String tagname;
     private Integer tagid;
-    private CommonTools commonTools=CommonTools.getInstance();
+    private CommonTools commonTools = CommonTools.getInstance();
 
     /*
     创建标签
@@ -48,11 +48,11 @@ public class Tag {
     tagid	是	标签ID
     tagname	是	标签名称，长度限制为32个字（汉字或英文字母），标签不可与其他标签重名。
      */
-    public Response update(Integer tagid,String tagname){
-        String upateURL=commonTools.getTagUpdateURL();
-        HashMap<String,Object> data=new HashMap<String,Object>();
-        data.put("tagname",tagname);
-        data.put("tagid",tagid);
+    public Response update(Integer tagid, String tagname) {
+        String upateURL = commonTools.getTagUpdateURL();
+        HashMap<String, Object> data = new HashMap<String, Object>();
+        data.put("tagname", tagname);
+        data.put("tagid", tagid);
         return given().log().all().contentType(ContentType.JSON).body(data)
                 .post(upateURL).then()
                 .extract().response();
@@ -66,9 +66,9 @@ public class Tag {
     access_token	是	调用接口凭证
     tagid	是	标签ID
      */
-    public Response delete(Integer tagid){
-        String deleteURL=commonTools.getTagDeleteURL();
-        return given().param("tagid",tagid)
+    public Response delete(Integer tagid) {
+        String deleteURL = commonTools.getTagDeleteURL();
+        return given().param("tagid", tagid)
                 .get(deleteURL).then()
                 .extract().response();
     }
@@ -81,12 +81,13 @@ public class Tag {
     access_token	是	调用接口凭证
     tagid	是	标签ID
      */
-    public Response getUserList(Integer tagid){
-        String tagUserURL=commonTools.getTagUserURL();
-        return given().param("tagid",tagid)
+    public Response getUserList(Integer tagid) {
+        String tagUserURL = commonTools.getTagUserURL();
+        return given().param("tagid", tagid)
                 .get(tagUserURL).then()
                 .extract().response();
     }
+
     /*
     增加标签成员
     参数说明：
@@ -97,24 +98,26 @@ public class Tag {
     userlist	否	企业成员ID列表，注意：userlist、partylist不能同时为空，单次请求长度不超过1000
     partylist	否	企业部门ID列表，注意：userlist、partylist不能同时为空，单次请求长度不超过100
      */
-    public Response addtagusers(Integer tagid, List ... values){
-        String tagAddtagusersURL=commonTools.getTagAddtagusersURL();
-        return tagUserCommon(tagAddtagusersURL,values);
+    public Response addtagusers(Integer tagid, List... values) {
+        String tagAddtagusersURL = commonTools.getTagAddtagusersURL();
+        return tagUserCommon(tagAddtagusersURL, values);
     }
+
     /*
     由于不能同时为空，所以单独操作一个方法。来独立测试仅应该参数时的情况
     listname:
         userlist 或 partylist
 
      */
-    public Response addtagusers(Integer tagid, String listname,ArrayList list){
-        String tagAddtagusersURL=commonTools.getTagAddtagusersURL();
-        HashMap<String,Object> data = new HashMap<String,Object>();
-        data.put("tagid",tagid);
-        data.put(listname,list);
+    public Response addtagusers(Integer tagid, String listname, ArrayList list) {
+        String tagAddtagusersURL = commonTools.getTagAddtagusersURL();
+        HashMap<String, Object> data = new HashMap<String, Object>();
+        data.put("tagid", tagid);
+        data.put(listname, list);
         return given().contentType(ContentType.JSON).body(data)
                 .when().post(tagAddtagusersURL).then().extract().response();
     }
+
     /*
     删除标签成员参数说明：
 
@@ -124,40 +127,41 @@ public class Tag {
     userlist	否	企业成员ID列表，注意：userlist、partylist不能同时为空，单次请求长度不超过1000
     partylist	否	企业部门ID列表，注意：userlist、partylist不能同时为空，单次请求长度不超过100
      */
-    public Response deltagusers(Integer tagid, List ... values){
-        String tagDeltagusersURL=commonTools.getTagDeltagusersURL();
-        return tagUserCommon(tagDeltagusersURL,values);
+    public Response deltagusers(Integer tagid, List... values) {
+        String tagDeltagusersURL = commonTools.getTagDeltagusersURL();
+        return tagUserCommon(tagDeltagusersURL, values);
     }
-    public Response deltagusers(Integer tagid, String listname,ArrayList list){
-        String tagDeltagusersURL=commonTools.getTagDeltagusersURL();
-        HashMap<String,Object> data = new HashMap<String,Object>();
-        data.put("tagid",tagid);
-        data.put(listname,list);
+
+    public Response deltagusers(Integer tagid, String listname, ArrayList list) {
+        String tagDeltagusersURL = commonTools.getTagDeltagusersURL();
+        HashMap<String, Object> data = new HashMap<String, Object>();
+        data.put("tagid", tagid);
+        data.put(listname, list);
         return given().contentType(ContentType.JSON).body(data)
                 .when().post(tagDeltagusersURL).then().extract().response();
     }
+
     /*
     tag操作通用代码
      */
-    public Response tagUserCommon(String URL,List ... values){
-        HashMap<String,Object> data = new HashMap<String,Object>();
-        data.put("tagid",tagid);
-        if(values.length==2){
-            data.put("userlist",values[0]);
-            data.put("partylist",values[1]);
+    public Response tagUserCommon(String URL, List... values) {
+        HashMap<String, Object> data = new HashMap<String, Object>();
+        data.put("tagid", tagid);
+        if (values.length == 2) {
+            data.put("userlist", values[0]);
+            data.put("partylist", values[1]);
         }
         return given().contentType(ContentType.JSON).body(data)
                 .when().post(URL).then().extract().response();
     }
+
     /*
     获取标签列表
      */
-    public Response getTagList(){
-        String tagListURL=commonTools.getTagListURL();
+    public Response getTagList() {
+        String tagListURL = commonTools.getTagListURL();
         return given().get(tagListURL).then().extract().response();
     }
-
-
 
 
 }

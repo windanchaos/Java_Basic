@@ -1,0 +1,9 @@
+ConsumerInfo: {}
+ConsumerTag: {}
+ConsumerClaim:
+  unclaim:
+    By.ViewText: "未认领"
+  search:
+    By.id: "com.maike51.xke:id/search_view"
+  claimed:
+    By.ViewText: "已认领"

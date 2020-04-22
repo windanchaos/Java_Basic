@@ -4,8 +4,8 @@
        xmlns:dubbo="http://dubbo.apache.org/schema/dubbo"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
 
-<!-- consumer's application name, used for tracing dependency relationship (not a matching criterion),
-    don't set it same as provider -->
+    <!-- consumer's application name, used for tracing dependency relationship (not a matching criterion),
+        don't set it same as provider -->
     <dubbo:application name="first-dubbo-consumer">
         <dubbo:parameter key="qos.port" value="33333"/>
     </dubbo:application>
