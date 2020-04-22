@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chaosbom.repository.CustomerRepository">
+    <resultMap id="customerMap" type="com.chaosbom.entity.Customer">
+        <id column="id" property="id"></id>
+        <result column="name" property="name"></result>
+        <collection property="goods" ofType="com.chaosbom.entity.Goods">
+            <id column="gid" property="id"></id>
+            <result column="gname" property="name"></result>
+        </collection>
+    </resultMap>
+    <select id="findCusGoodsByID" resultType="com.chaosbom.entity.Customer" parameterType="int" resultMap="customerMap">
+        select c.id,c.name,g.id as gid,g.name as gname from t_consumer as c,t_consumer_goods as cg,t_goods as g where cg.cid=c.id and cg.gid=g.id and c.id=#{id};
+    </select>
+</mapper>

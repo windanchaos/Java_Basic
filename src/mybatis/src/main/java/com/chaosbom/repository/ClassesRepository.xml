@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chaosbom.repository.ClassesRepository">
+    <resultMap id="classesMap" type="com.chaosbom.entity.Classes">
+        <id column="id" property="id"></id>
+        <result column="name" property="name"></result>
+        <collection property="students" ofType="com.chaosbom.entity.Student">
+            <id column="sid" property="id"></id>
+            <result column="sname" property="name"></result>
+        </collection>
+    </resultMap>
+    <select id="findByID" resultType="com.chaosbom.entity.Student" parameterType="int" resultMap="classesMap">
+        select s.id as sid,s.name as sname,c.id,c.name from t_student as s ,t_classes as c where c.id=#{id} and s.cid=c.id
+    </select>
+</mapper>
