@@ -17,7 +17,7 @@ package algorithm.string;
 public class CountAndSay {
     public static void main(String[] args) {
         System.out.println(solution(1));
-        System.out.println(solution(2));
+        System.out.println(solution(5));
 
     }
     /*

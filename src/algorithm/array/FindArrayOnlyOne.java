@@ -7,7 +7,7 @@ import java.lang.reflect.Array;
 
 public class FindArrayOnlyOne {
     public static void main(String[] args) {
-        int[] nums={2,1,2,3,4,1};
+        int[] nums={2,1,2,3,3,4,1};
         FindArrayOnlyOne findArrayOnlyOne=new FindArrayOnlyOne();
         int[] r=findArrayOnlyOne.singleNumberMiddle(nums);
         System.out.print(Array.getInt(r,0)+" ");

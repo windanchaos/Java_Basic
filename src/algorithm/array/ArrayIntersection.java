@@ -14,8 +14,8 @@ public class ArrayIntersection {
 
     public static void main(String[] args) {
         int[] nums1 = {1, 2, 2, 1};
-        int[] nums2 = {2, 2};
-        System.out.println(solution(nums1, nums2).length);
+        int[] nums2 = {2, 2,1,0};
+        System.out.println(Arrays.toString(solution(nums1, nums2)));
     }
 
     public static int[] solution(int[] nums1, int[] nums2) {
@@ -28,9 +28,11 @@ public class ArrayIntersection {
                 hash.put(nums1[i], 1);
         }
         for (int j = 0; j < nums2.length; j++) {
-            if (hash.containsKey(nums2[j]) && hash.get(nums2[j]) > 0) {
-                list.add(nums2[j]);
+            if (hash.containsKey(nums2[j])) {
                 hash.put(nums2[j], hash.get(nums2[j]) - 1);
+                if(hash.get(nums2[j])>=0){
+                    list.add(nums2[j]);
+                }
             }
         }
         int[] array = new int[list.size()];
