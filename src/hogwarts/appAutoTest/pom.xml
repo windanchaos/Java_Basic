@@ -58,7 +58,7 @@
         <dependency>
             <groupId>org.yaml</groupId>
             <artifactId>snakeyaml</artifactId>
-            <version>1.25</version>
+            <version>1.32</version>
         </dependency>
         <!--Java将字符串转换成可执行代码 -->
         <dependency>
