@@ -1,7 +1,7 @@
 package xke.po.crm;
 
-import xke.po.frame.CommonTools;
-import xke.po.frame.AppBase;
+import frame.CommonTools;
+import frame.AppBase;
 
 //todo，初始化后直接返回
 public class OrderList extends AppBase {

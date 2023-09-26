@@ -11,6 +11,7 @@ import io.restassured.response.Response;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
+import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
 import java.util.Base64;
 import java.util.List;
@@ -106,5 +107,26 @@ public class AssuredDemo {
                     return responseBuilder.build();
                 }).when().get(base64Stock).
                 prettyPeek().then().body("SOGO.name", equalTo("搜狗"));
+    }
+
+    @Test
+    public void testBasexxxFilter() {
+        System.out.println(given()
+                .filter((request, response, ctx) -> {
+                    //next是串改动作
+                    Response resOrigin = ctx.next(request, response);
+                    //之所以要clone，是因为response中包含了响应头、cookies、contentype、body等信息
+                    ResponseBuilder responseBuilder = new ResponseBuilder().clone(resOrigin);
+                    String decodeResponse = null;
+                    try {
+                        decodeResponse = new String(Base64.getDecoder().decode(resOrigin.body().asString().replace("\r\n", "")),"utf-8");
+                    } catch (UnsupportedEncodingException e) {
+                        e.printStackTrace();
+                    }
+                    responseBuilder.setBody(decodeResponse);
+                    return responseBuilder.build();
+                }).when().get("http://www.baidu.com").prettyPeek());
+
+
     }
 }

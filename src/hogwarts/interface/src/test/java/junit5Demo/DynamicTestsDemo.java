@@ -27,10 +27,10 @@ class DynamicTestsDemo {
     private final Calculator calculator = new Calculator();
 
     // This will result in a JUnitException!
-    @TestFactory
-    List<String> dynamicTestsWithInvalidReturnType() {
-        return Arrays.asList("Hello");
-    }
+//    @TestFactory
+//    List<String> dynamicTestsWithInvalidReturnType() {
+//        return Arrays.asList("Hello");
+//    }
 
     @TestFactory
     Collection<DynamicTest> dynamicTestsFromCollection() {

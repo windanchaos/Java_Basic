@@ -1,8 +1,8 @@
 package xke.po.crm;
 
 import org.openqa.selenium.By;
-import xke.po.frame.CommonTools;
-import xke.po.frame.AppBase;
+import frame.CommonTools;
+import frame.AppBase;
 
 import java.util.HashMap;
 

@@ -70,19 +70,19 @@ public class ReverseInteger {
     执行用时 :3 ms, 在所有 Java 提交中击败了92.22% 的用户
     内存消耗 :34.1 MB, 在所有 Java 提交中击败了78.39%的用户
      */
-    public static int solution2(int x){
-        int new_num=0;
-        while(x!=0){
+    public static int solution2(int x) {
+        int new_num = 0;
+        while (x != 0) {
             //极值减去new_num加起来的值比较加前的值
-            if(new_num>0&&new_num>(Integer.MAX_VALUE-x%10)/10){
+            if (new_num > 0 && new_num > (Integer.MAX_VALUE - x % 10) / 10) {
                 return 0;
             }
             //极值减去new_num加起来的值比较加前的值
-            if(new_num<0&&new_num<(Integer.MIN_VALUE-x%10)/10){
+            if (new_num < 0 && new_num < (Integer.MIN_VALUE - x % 10) / 10) {
                 return 0;
             }
-            new_num=new_num*10+x%10;
-            x=x/10;
+            new_num = new_num * 10 + x % 10;
+            x = x / 10;
         }
         return new_num;
     }

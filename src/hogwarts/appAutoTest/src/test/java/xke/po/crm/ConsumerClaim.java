@@ -2,8 +2,8 @@ package xke.po.crm;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import xke.po.frame.AppBase;
-import xke.po.frame.CommonTools;
+import frame.AppBase;
+import frame.CommonTools;
 
 import java.util.HashMap;
 import java.util.List;
@@ -21,7 +21,7 @@ public class ConsumerClaim extends AppBase {
     private By claimButton;
 
     public ConsumerClaim(Boolean starDirect) {
-        super(".client.view.claim.ClaimA`ctivity");
+        super(".client.view.claim.ClaimActivity");
         HashMap<String, By> elements = getElementsByConfig();
         //反射方式设置实例中的定位元素的值
         CommonTools.setByFields(this, elements);

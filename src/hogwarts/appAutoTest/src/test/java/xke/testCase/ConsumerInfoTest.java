@@ -3,7 +3,7 @@ package xke.testCase;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
-import xke.po.frame.CommonTools;
+import frame.CommonTools;
 import xke.po.crm.CRM;
 import xke.po.crm.ConsumerInfo;
 

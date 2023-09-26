@@ -1,7 +1,7 @@
 package xke.po.crm;
 
-import xke.po.frame.CommonTools;
-import xke.po.frame.AppBase;
+import frame.CommonTools;
+import frame.AppBase;
 
 //朋友圈
 public class Frindcircle extends AppBase {

@@ -12,12 +12,12 @@ import java.util.concurrent.TimeUnit;
 
 public class AppBase {
     protected static AndroidDriver driver;
-    public static xke.po.frame.AppBase appBase;
+    public static frame.AppBase appBase;
 
     public AppBase() {
         //保证只有一个实例和driver存在
         if (null == appBase && null == appBase.driver) {
-            xke.po.frame.AppBase.initApp(null);
+            frame.AppBase.initApp(null);
         }
     }
 
